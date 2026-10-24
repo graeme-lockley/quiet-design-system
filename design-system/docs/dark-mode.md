@@ -1,6 +1,6 @@
 # Dark mode
 
-**Quiet after dark. Version 1.1.0.**
+**Quiet after dark. Version 1.2.0.**
 
 Dark mode is not an inversion. It is the same room at night: the same proportions, the same hierarchy, the same single green accent — lit differently so the work stays comfortable for long sessions.
 

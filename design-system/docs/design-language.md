@@ -1,6 +1,6 @@
 # Quiet
 
-**The family design language for Alder. Version 1.1.0 — captured 24 October 2026.**
+**The family design language for Alder. Version 1.2.0 — captured 24 October 2026.**
 
 Chosen from four explorations. This document is the idea and the rules. The machine-readable source is [`tokens.json`](../tokens/tokens.json); the rendered proof is [`reference/index.html`](../reference/index.html).
 
@@ -89,7 +89,7 @@ Never use an app tint for buttons, links, charts, status, selection or focus. Th
 These are the details that make a Quiet screen recognisable, even without the logo.
 
 1. **The eyebrow rule.** A 18×1px accent line before a small uppercase context label: `—— SATURDAY, 24 OCTOBER · ZAR`. It is the only ornament on the page.
-2. **The two-level rail.** A narrow app rail (monograms) beside a 236px section sidebar. The rail is identity; the sidebar is place.
+2. **The two-level rail — when there are peers.** A narrow app rail (monograms) beside a 236px section sidebar when the family has 2+ apps. A solo app uses one column: the monogram moves into the sidebar head.
 3. **The hairline card.** 1px line, 8px radius, 20px padding, no shadow. On hover, only the rule darkens.
 4. **The ink primary button.** The only solid near-black surface in a light interface; in dark mode it becomes paper. Never a coloured primary button.
 5. **Tabular figures, right-aligned.** Money and counts use tabular numerals. Columns align on the decimal, not on the left edge.
@@ -137,6 +137,7 @@ The accent changes value, not identity: it stays green, and it stays the only ac
 | Let one number, one sentence or one action lead the screen. | Fill the first viewport with equal-weight cards. |
 | Use the canvas mode for boards, wide tables and timelines; fill the main column. | Cap a kanban or a wide table at the 1180px reading measure. |
 | Let a sparse sidebar collapse on desktop; provide a 34px toggle and `⌘\`. | Leave a 236px sidebar mostly empty and stick it to the viewport forever. |
+| Omit the rail when there is only one app; put identity in the sidebar head. | Render a one-item rail beside the sidebar and create a menu/sub-menu feeling. |
 | Use ink, space and type for hierarchy. | Use colour to distinguish sections. |
 | Use 1px rules at `color.line`; 1px darker rules for section boundaries. | Use drop shadows on cards, tables or inputs. |
 | Use a 34px control height (comfortable) or 30px (compact) consistently within a screen. | Mix comfortable and compact in the same form. |

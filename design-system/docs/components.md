@@ -1,6 +1,6 @@
 # Component contracts
 
-**Anatomy, states and behaviour for the Quiet core set. Version 1.1.0.**
+**Anatomy, states and behaviour for the Quiet core set. Version 1.2.0.**
 
 A component contract is a promise: if you build this, it behaves like this in every app. Visual values come from [`tokens.json`](../tokens/tokens.json); this document describes structure and behaviour. The rendered proof is [`reference/index.html`](../reference/index.html).
 
@@ -28,6 +28,8 @@ A component contract is a promise: if you build this, it behaves like this in ev
 
 **Purpose.** Establish the family and move between apps without losing place.
 
+**Solo-app rule.** Render the rail only when the workspace has **2+ apps**. A one-app workspace has no rail; the sidebar head carries the 36px monogram, the app name and the workspace context. Help and account move to the sidebar nav/footer or the top bar. Do not shrink a one-item rail to an icon strip.
+
 **Anatomy.** 68px rail. Brand mark (36px) at the top, then app monograms (36px), then a flexible gap, then Help and the person avatar at the bottom. Active app has an `accentWash` tile, accent monogram and a 2px accent rule on the left edge.
 
 **States.**
@@ -46,7 +48,7 @@ A component contract is a promise: if you build this, it behaves like this in ev
 
 **Accessibility.** The rail is `<nav aria-label="Applications">`. Each monogram has the full app name as its accessible label and a tooltip. The active item uses `aria-current="page"`.
 
-**Do / Don't.** Do keep monograms to 1–2 characters. Don't use app logos, coloured icon sets or per-app accents in the default system.
+**Do / Don't.** Do keep monograms to 1–2 characters. Do omit the rail entirely for a solo app and put the monogram in the sidebar head. Don't render a one-item rail, use app logos, coloured icon sets or per-app accents in the default system.
 
 ---
 
@@ -54,7 +56,7 @@ A component contract is a promise: if you build this, it behaves like this in ev
 
 **Purpose.** Show the sections of the current app and where the person is.
 
-**Anatomy.** App name (18px/600) + organisation context (11.5px). Group label (10.5px uppercase), items 36px tall with 16px icon and 13.5px label. Optional count badge on the right. Bottom contextual card. Footer: Settings, Sign out. A 34px `panel-left` toggle lives at the start of the top bar, never inside the sidebar header.
+**Anatomy.** App name (18px/600) + organisation context (11.5px). Group label (10.5px uppercase), items 36px tall with 16px icon and 13.5px label. Optional count badge on the right. Bottom contextual card. Footer: Settings, Sign out. A 34px `panel-left` toggle lives at the start of the top bar, never inside the sidebar header. **Solo-app variant:** a 36px monogram + app name + workspace context sit at the top of the sidebar; the rail is absent.
 
 **States.** Expanded, collapsed (0px), and mobile sheet. Default `inkSecondary`; hover `hover` + `ink`; active `selected` + `ink` + accent icon + 2px inset accent rule; focus ring; badge `pill` background.
 

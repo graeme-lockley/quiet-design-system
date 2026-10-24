@@ -11,6 +11,7 @@ Numbered architecture decisions for the Quiet design system. An accepted decisio
 | [0005](0005-tokens-are-the-source-of-truth.md) | Tokens are canonical; adapters are generated | accepted |
 | [0006](0006-repository-is-the-contract.md) | The repository is the contract, not a component library | accepted |
 | [0007](0007-layout-modes-and-sidebar-collapse.md) | Reading/canvas layout modes and desktop sidebar collapse | accepted |
+| [0008](0008-solo-app-shell.md) | Solo-app shell: omit the one-item rail | accepted |
 
 ## Format
 

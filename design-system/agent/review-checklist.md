@@ -1,6 +1,6 @@
 # Review checklist
 
-**Quiet 1.1.0 · the definition of done for every delivery.**
+**Quiet 1.2.0 · the definition of done for every delivery.**
 
 Copy this checklist into the delivery's `DESIGN.md` or pull request. Every box is either checked or explicitly waived with a reason and an owner. Do not delete rows.
 
@@ -8,7 +8,7 @@ Copy this checklist into the delivery's `DESIGN.md` or pull request. Every box i
 
 ## A. System integrity
 
-- [ ] The delivery cites `Quiet 1.1.0` and the commit/tag it was built from.
+- [ ] The delivery cites `Quiet 1.2.0` and the commit/tag it was built from.
 - [ ] Every colour is a semantic role from `tokens.json`; no raw hex, no approximate grey.
 - [ ] Every type size, space value, radius and control height comes from the scales.
 - [ ] There is **one accent** and it is used only for links, focus, active navigation, selection or the primary data series.
@@ -30,6 +30,7 @@ Copy this checklist into the delivery's `DESIGN.md` or pull request. Every box i
 - [ ] The density is consistent within each screen (comfortable or compact, not mixed).
 - [ ] The shell uses the 68 / 236 / 56px rail, sidebar and top bar (or the documented responsive behaviour).
 - [ ] A sparse desktop sidebar can collapse to 0px; the state persists and the collapsed sidebar is inert.
+- [ ] If the workspace has one app, no one-item rail is rendered; the sidebar head carries the monogram, app name and workspace context.
 
 ## C. Components
 

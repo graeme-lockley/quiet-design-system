@@ -4,6 +4,19 @@ All notable changes to the Quiet design system are recorded here. The format fol
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-10-24
+
+### Added
+
+- Solo-app shell: when a workspace has one app, omit the 68px rail and move the monogram, app name and workspace context into the sidebar head. The rail returns at two apps.
+- `layout.railWidthSolo` and `component.appRail` tokens (the rail is visible from two apps).
+- ADR 0008 recording the rule and rejecting a narrower one-item rail.
+
+### Changed
+
+- The family shell is now explicitly conditional: a one-item rail is chrome, not identity.
+- Relay 0.1.0 adopts the solo-app shell.
+
 ## [1.1.0] — 2026-10-24
 
 ### Added

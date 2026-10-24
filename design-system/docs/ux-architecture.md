@@ -1,6 +1,6 @@
 # UX architecture
 
-**The family model, shell, navigation and behaviour for Quiet. Version 1.1.0.**
+**The family model, shell, navigation and behaviour for Quiet. Version 1.2.0.**
 
 This document is implementation-neutral. It describes what the user experiences, not how it is built.
 
@@ -59,13 +59,15 @@ The system does not prescribe these names. It prescribes that every app in the f
 
 | Zone | Width | Responsibility |
 | --- | --- | --- |
-| **App rail** | 68px | Identity. Which app am I in? Switch apps. Help and account. |
+| **App rail** | 68px with 2+ apps · 0 for a solo app | Identity and app switching. Omitted when there is only one app; the sidebar head carries the monogram. |
 | **Sidebar** | 236px | Place. Sections of the current app. One contextual progress card at the bottom. |
 | **Top bar** | 56px | Context and global action. Breadcrumbs, global search/command, notifications, identity. |
 | **Canvas** | 1180px reading · fluid for canvas surfaces | The work. Owns the page title, page actions, content and states. |
 | **Inspector** | 320px (optional) | Detail or context for a selected object. Only where comparison and context are part of the task; otherwise use a page or a panel. |
 
 The shell is fixed. Content scrolls independently of the rail, sidebar and top bar. The sidebar never scrolls horizontally; if it has more than 9 items, group or prioritise.
+
+**Solo-app shell.** When the workspace has exactly one app, omit the rail and let the sidebar be the only navigation column. Move the monogram, app name and workspace context into the sidebar head; keep help and account in the nav or top bar. The rail returns as soon as a second app exists. A one-item rail is chrome, not identity.
 
 **Two content modes.** Reading surfaces (overview prose, settings, forms, detail copy) hold a 1180px measure and centre it in the main column. Canvas surfaces (boards, wide tables, timelines, canvases) fill the main column edge-to-edge with 40px inline padding. The sidebar's right edge and the viewport are the canvas boundaries; a canvas never adds a second max-width or a floating frame. Choose the mode by the task, not by app.
 
@@ -95,6 +97,7 @@ Panels are 400–520px, right side, with a scrim only if they are modal. On smal
 
 ### 3.3 The app rail
 
+- Render the rail only when the workspace has **2+ apps**. For a solo app, omit it entirely and put the monogram in the sidebar head. Do not shrink it to an icon strip; that keeps the double-column problem.
 - Maximum **7** apps. Beyond that, a "More" item opens a menu; do not shrink the monograms.
 - Monogram: 1–2 characters, 600 weight, `title`/accessible name is the full app name.
 - Order is stable across sessions and devices. Never reorder by usage.
@@ -148,12 +151,26 @@ Rules:
 - A canvas still respects the type and spacing scales. Full width is not permission for denser or smaller content.
 - At ≤1120px, canvas padding drops with the reading padding; at ≤860px the sidebar is a sheet and the canvas is the full viewport.
 
+### 3.9 Solo-app shell
+
+| Apps in the workspace | Shell |
+| --- | --- |
+| **1** | Sidebar 236px (collapsible to 0) + main. Monogram, app name and workspace context in the sidebar head. No rail. |
+| **2–7** | Rail 68px + sidebar 236px + main. The rail carries the monograms; the sidebar carries the sections. |
+
+Rules:
+
+- The threshold is the number of apps, not a per-screen preference.
+- In solo mode, Help / API guide and account live in the sidebar navigation, sidebar footer or top bar. Do not rebuild the rail's content as a second strip.
+- The sidebar collapse, the top-bar toggle and `⌘\` work identically in both shells.
+- A one-item rail is never rendered, even if the app is "the main one".
+
 ---
 
 ## 4. App identity
 
 - **One accent for the family.** The accent marks interaction, focus and live data. It is never per-app in the default system.
-- **Identity is the monogram.** App names in the rail, masthead and switcher; monograms in compact contexts.
+- **Identity is the monogram.** App names in the rail, masthead, sidebar head and switcher; monograms in compact contexts. In a solo app the monogram lives in the sidebar head.
 - **Optional app tints** are allowed only on the monogram tile and the 2px active indicator. Never on buttons, links, charts, status, selection or navigation icons. Off by default.
 - **Transitions between apps** are a 200ms crossfade of the content area; the rail and window chrome stay still. No sliding panels, no 3D.
 - **Empty apps** still appear in the rail if the person has access; they show a purposeful empty state, not a "coming soon" page.

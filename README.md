@@ -1,6 +1,6 @@
 # Quiet Design System
 
-**Project `quiet-design-system` · design language Quiet · v1.1.0**
+**Project `quiet-design-system` · design language Quiet · v1.2.0**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -30,7 +30,7 @@ If you are handing a UI task to a coding or design agent, give it this repositor
 
 ### Prompt to start a delivery
 
-> Work in the delivery repository. The design source is this project, **Quiet 1.1.0**.
+> Work in the delivery repository. The design source is this project, **Quiet 1.2.0**.
 > Read `AGENTS.md` first, then `design-system/tokens/tokens.json`.
 > Follow `design-system/agent/delivery-contract.md` and complete
 > `design-system/agent/review-checklist.md`. Do not invent tokens or components;
@@ -127,7 +127,7 @@ The accent is the one colour that means **“you can act here” or “this is l
 4. Return a `DESIGN.md` per the [delivery contract](design-system/agent/delivery-contract.md), with light/night/mobile screens, all states, the token map, and the completed [review checklist](design-system/agent/review-checklist.md).
 5. Log every deviation and every missing token/pattern back to this repository.
 
-The design system is versioned. A delivery should pin the version and commit it was built from; `Quiet 1.1.0` is the current release.
+The design system is versioned. A delivery should pin the version and commit it was built from; `Quiet 1.2.0` is the current release.
 
 ---
 
@@ -154,4 +154,4 @@ The four-direction explorer — Quiet, Nocturne, Folio, Calibre — is preserved
 
 MIT © 2026 Graeme Lockley. See [LICENSE](LICENSE). Contributions are accepted under the same license.
 
-**Version 1.1.0 · captured 24 October 2026 · Quiet Design System**
+**Version 1.2.0 · captured 24 October 2026 · Quiet Design System**

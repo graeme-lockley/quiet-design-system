@@ -1,6 +1,6 @@
 # AGENTS.md — Quiet Design System
 
-**Project `quiet-design-system` · Alder family design language · v1.1.0**
+**Project `quiet-design-system` · Alder family design language · v1.2.0**
 
 You are building UI for an application in the Alder family. This repository is the **design contract**. A delivery is not complete because it looks close; it is complete when it follows this file, uses the canonical tokens, and passes the review checklist.
 
@@ -41,7 +41,7 @@ These are not suggestions. If a product requirement conflicts with one, raise it
 11. **Accessibility is material.** WCAG AA contrast, a visible 2px focus ring with 2px offset, a complete keyboard path, 34px targets (44px touch), reduced-motion support, and accessible names.
 12. **Follow the family grammar.** App → section → object. Two levels of chrome, then content. Every overview uses the same bands. Do not add a third navigation column, a fifth KPI, or a second chart.
 13. **Icons follow the reference style.** 24px viewBox, 1.5px stroke, round caps and joins, `currentColor`, 16px in navigation and controls, 20px in page headers. No filled or mixed icon sets. See [`docs/iconography.md`](design-system/docs/iconography.md).
-14. **Choose the layout mode.** Reading pages (overview prose, settings, forms) hold the 1180px measure. Canvas pages (boards, wide tables, timelines) fill the main column with 40px padding. Never cap a canvas at the reading measure. A sparse desktop sidebar can collapse to 0px; the rail remains.
+14. **Choose the layout mode.** Reading pages (overview prose, settings, forms) hold the 1180px measure. Canvas pages (boards, wide tables, timelines) fill the main column with 40px padding. Never cap a canvas at the reading measure. A sparse desktop sidebar can collapse to 0px. If the workspace has exactly one app, omit the 68px rail and put the monogram in the sidebar head; the rail returns at two apps.
 
 ---
 
@@ -64,7 +64,7 @@ The rendered reference is **plain HTML/CSS only to make the language judgeable**
 
 Do this in order for every screen or app.
 
-1. **Pin the version.** Record `Quiet 1.1.0` and the commit/tag you are working from in the delivery's `DESIGN.md`.
+1. **Pin the version.** Record `Quiet 1.2.0` and the commit/tag you are working from in the delivery's `DESIGN.md`.
 2. **Write the context before the UI.** Use the template in [`delivery-contract.md`](design-system/agent/delivery-contract.md): product, person, primary job, primary action, constraints, what must not be lost.
 3. **Inventory the screens and states.** List every screen, overlay and state before designing. Include light and night.
 4. **Compose against the family grammar.** Shell → page header → lead thought → 3–4 stats → one main signal → needs-attention → recent activity → family bridge. Omit what is not needed; do not add bands to fill space.
@@ -140,7 +140,7 @@ Open `design-system/reference/index.html` directly in a browser to see the syste
 
 A delivery is done when:
 
-- [ ] It cites `Quiet 1.1.0` and the commit it was built from.
+- [ ] It cites `Quiet 1.2.0` and the commit it was built from.
 - [ ] It uses only semantic roles from the tokens; no raw colours or sizes.
 - [ ] It has one primary action per view/dialog.
 - [ ] Light and night are both designed and verified.

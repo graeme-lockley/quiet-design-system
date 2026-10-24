@@ -1,6 +1,6 @@
 # Design agent brief — Quiet
 
-**Alder family design language · v1.1.0 · 24 October 2026**
+**Alder family design language · v1.2.0 · 24 October 2026**
 
 > Paste this file into your design agent before the task. Replace the `[bracketed]` context with the app and screen you are asking for. Then attach or reference [`../tokens/tokens.json`](../tokens/tokens.json) and, if the agent can read images, [`../reference/index.html`](../reference/index.html) or its screenshots.
 >
@@ -56,7 +56,7 @@ Quiet is a daylight language for consequential software. It removes what compete
 13. **No dead ends.** Every empty, loading, error, offline and permission state is designed. The screen is not done at the happy path.
 14. **No invented product copy.** Follow the content rules in section 7. If you need a line of copy, write it in the product's voice, not in marketing voice.
 15. **Icons follow the reference style.** 24px grid, 1.5px stroke, round joins, `currentColor`; 16px in controls and navigation, 20px in page headers. No filled or mixed icon sets. Icon-only controls have accessible names.
-16. **Choose reading or canvas.** Reading pages hold the 1180px measure. Boards, wide tables and timelines fill the main column (40px inline padding) between the sidebar and the viewport. A sparse desktop sidebar can collapse to 0px with a top-bar toggle; the rail remains.
+16. **Choose reading or canvas.** Reading pages hold the 1180px measure. Boards, wide tables and timelines fill the main column (40px inline padding) between the sidebar and the viewport. A sparse desktop sidebar can collapse to 0px with a top-bar toggle. If the workspace has one app, omit the rail and put the monogram in the sidebar head; the rail returns at two apps.
 
 ---
 
@@ -215,7 +215,7 @@ They are illustrative, not exhaustive. The docs and tokens are authoritative.
 - [`review-checklist.md`](review-checklist.md) — the full definition of done.
 - [`../reference/index.html`](../reference/index.html) — a rendered proof, light and dark.
 
-**Version 1.1.0.** If the brief and a token disagree, the token wins. If neither covers the case, propose an addition — don't invent a style.
+**Version 1.2.0.** If the brief and a token disagree, the token wins. If neither covers the case, propose an addition — don't invent a style.
 
 ## 14. Token card — if you cannot open the JSON
 

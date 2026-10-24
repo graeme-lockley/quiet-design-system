@@ -1,6 +1,6 @@
 # Delivery contract
 
-**What every UI delivery built with Quiet must contain. Version 1.1.0.**
+**What every UI delivery built with Quiet must contain. Version 1.2.0.**
 
 This contract is stack-agnostic. It does not care whether the delivery is React, Swift, Flutter, a server-rendered page or a design file. It cares that the work is **legible, reviewable and consistent with the family language**.
 
@@ -50,7 +50,7 @@ Copy this exactly. Delete sections only when they are genuinely not applicable, 
 ```md
 # Design record — {Product} / {Screen or flow}
 
-- **Design system:** Quiet 1.1.0
+- **Design system:** Quiet 1.2.0
 - **Commit/tag:** {git sha or tag}
 - **Date:** {YYYY-MM-DD}
 - **Author:** {name}

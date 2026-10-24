@@ -257,7 +257,8 @@ ${table(["Step", "Value"], spaceRows)}
 
 | Item | Value |
 | --- | --- |
-| Rail width | ${code(tokens.layout.railWidth)} |
+| Rail width (multi-app) | ${code(tokens.layout.railWidth)} |
+| Rail width (solo) | ${code(tokens.layout.railWidthSolo)} |
 | Sidebar width | ${code(tokens.layout.navWidth)} |
 | Inspector width | ${code(tokens.layout.inspectorWidth)} |
 | Top bar height | ${code(tokens.layout.topbarHeight)} |

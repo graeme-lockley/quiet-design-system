@@ -169,7 +169,7 @@ for (const step of requiredTypeSteps) {
   }
 }
 
-const requiredLayout = ["railWidth", "navWidth", "topbarHeight", "contentMax", "contentPadX", "canvasMax", "canvasPadX", "sidebarCollapsedWidth", "gap"];
+const requiredLayout = ["railWidth", "railWidthSolo", "navWidth", "topbarHeight", "contentMax", "contentPadX", "canvasMax", "canvasPadX", "sidebarCollapsedWidth", "gap"];
 for (const key of requiredLayout) {
   if (!tokens.layout?.[key]) fail(`Missing layout token: layout.${key}`);
 }
@@ -332,6 +332,7 @@ const requiredFiles = [
   "design-system/decisions/0005-tokens-are-the-source-of-truth.md",
   "design-system/decisions/0006-repository-is-the-contract.md",
   "design-system/decisions/0007-layout-modes-and-sidebar-collapse.md",
+  "design-system/decisions/0008-solo-app-shell.md",
   "design-system/agent/examples/ledger-overview.md",
   "design-system/agent/examples/conversation.md",
   "design-system/reference/index.html",
