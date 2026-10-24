@@ -1,6 +1,6 @@
 # UX architecture
 
-**The family model, shell, navigation and behaviour for Quiet. Version 1.0.0.**
+**The family model, shell, navigation and behaviour for Quiet. Version 1.1.0.**
 
 This document is implementation-neutral. It describes what the user experiences, not how it is built.
 
@@ -62,10 +62,12 @@ The system does not prescribe these names. It prescribes that every app in the f
 | **App rail** | 68px | Identity. Which app am I in? Switch apps. Help and account. |
 | **Sidebar** | 236px | Place. Sections of the current app. One contextual progress card at the bottom. |
 | **Top bar** | 56px | Context and global action. Breadcrumbs, global search/command, notifications, identity. |
-| **Canvas** | 1180px max | The work. Owns the page title, page actions, content and states. |
+| **Canvas** | 1180px reading · fluid for canvas surfaces | The work. Owns the page title, page actions, content and states. |
 | **Inspector** | 320px (optional) | Detail or context for a selected object. Only where comparison and context are part of the task; otherwise use a page or a panel. |
 
 The shell is fixed. Content scrolls independently of the rail, sidebar and top bar. The sidebar never scrolls horizontally; if it has more than 9 items, group or prioritise.
+
+**Two content modes.** Reading surfaces (overview prose, settings, forms, detail copy) hold a 1180px measure and centre it in the main column. Canvas surfaces (boards, wide tables, timelines, canvases) fill the main column edge-to-edge with 40px inline padding. The sidebar's right edge and the viewport are the canvas boundaries; a canvas never adds a second max-width or a floating frame. Choose the mode by the task, not by app.
 
 ---
 
@@ -106,6 +108,8 @@ Panels are 400–520px, right side, with a scrim only if they are modal. On smal
 - Active item: `selected` background, ink text, accent icon, 2px inset accent rule.
 - Badges are for **counts that need action** (approvals) or **status** (error). Never for "new" marketing, never above 99.
 - The bottom contextual card is for one time-bound task ("Month-end close · 2 days remaining"). It is not a promotion slot.
+- **Desktop collapse.** A 34px toggle at the start of the top bar collapses the sidebar to 0px; the app rail remains. The toggle carries `aria-expanded` and `aria-controls`; `⌘\` does the same. The state is stored per device and applied before first paint. When collapsed the sidebar is `inert`; focus stays on the toggle.
+- Do not replace the sidebar with a second icon rail. The app rail already carries identity; section labels are the navigation. On mobile the existing sheet is the collapsed form.
 - Keyboard: `1`–`9` select the visible sections in order while the shell has focus; `⌘K` is always available.
 
 ### 3.5 The top bar
@@ -129,6 +133,20 @@ Panels are 400–520px, right side, with a scrim only if they are modal. On smal
 - Opening a panel appends state to the URL and does not create a new history entry (replace). Opening a page pushes one.
 - Back closes the current overlay before navigating. Escape does the same.
 - At a cold start, a deep link restores the app, section, object and panel.
+
+### 3.8 Reading and canvas
+
+| Mode | Use for | Measure | Boundary |
+| --- | --- | --- | --- |
+| **Reading** | overview prose, settings, forms, object detail copy | 1180px, centred in the main column | Open margin; the whitespace is intentional |
+| **Canvas** | boards, wide tables, timelines, canvases | Fluid inside the main column, 40px inline padding | Sidebar right edge and viewport edge |
+
+Rules:
+
+- A canvas fills the space between the sidebar and the right edge. Do not centre a 1180px column on a board.
+- A reading page may contain a canvas region (for example, a board embedded in an overview); the region, not the page, adopts the fluid mode.
+- A canvas still respects the type and spacing scales. Full width is not permission for denser or smaller content.
+- At ≤1120px, canvas padding drops with the reading padding; at ≤860px the sidebar is a sheet and the canvas is the full viewport.
 
 ---
 
@@ -295,7 +313,7 @@ Rules: no raw error codes in the primary sentence (put a reference at the end); 
 
 ## 10. Accessibility
 
-- **Landmarks**: app rail = navigation (labelled "Applications"), sidebar = navigation (labelled by the app name), top bar = banner, content = main.
+- **Landmarks**: app rail = navigation (labelled "Applications"), sidebar = navigation (labelled by the app name), top bar = banner, content = main. A collapsed sidebar is `inert`; the toggle remains the only focusable entry point.
 - **Skip link**: "Skip to content" is the first focusable element.
 - **Focus management**: dialogs and drawers trap focus, return it to the trigger on close, and close on Escape. Panels that are not modal do not trap.
 - **Composite widgets**: arrows move within a segmented control, tab list, menu and grid. Home/End jump to the first/last item.
@@ -315,8 +333,8 @@ Rules: no raw error codes in the primary sentence (put a reference at the end); 
 
 | Width | Shell | Sidebar | Inspector | Table |
 | --- | --- | --- | --- | --- |
-| ≥ 1440px | Full | Persistent | Persistent if the app uses one | Full columns |
-| 1120–1439px | Full | Persistent | Persistent | Full columns; content maxes at 1180 |
+| ≥ 1440px | Full | Persistent, collapsible to 0 | Persistent if the app uses one | Full columns |
+| 1120–1439px | Full | Persistent, collapsible | Persistent | Reading 1180; canvas fluid |
 | 860–1119px | Rail collapses to monograms | Persistent or sheet | Becomes a drawer | Horizontal scroll, sticky first column |
 | 640–859px | Rail hidden; app switcher in the top bar | Sheet | Full-height sheet | Horizontal scroll; secondary columns hidden |
 | < 640px | Single column | Sheet | Full-screen | Card rows only if fewer than 4 fields; otherwise scroll |

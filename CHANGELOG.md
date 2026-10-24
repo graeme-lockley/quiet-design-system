@@ -4,6 +4,25 @@ All notable changes to the Quiet design system are recorded here. The format fol
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-10-24
+
+### Added
+
+- Reading and canvas layout modes: reading surfaces hold the 1180px measure; boards, wide tables and timelines fill the main column with 40px inline padding.
+- Desktop sidebar collapse to 0px with a top-bar toggle, `⌘\` shortcut, per-device persistence, inert hidden content and a 200ms transition.
+- `layout.canvasMax`, `layout.canvasPadX`, `layout.sidebarCollapsedWidth`, `layout.sidebarToggleWidth`, `layout.modes` and `component.sidebar` tokens.
+- `i-panel-left` reference icon and sidebar toggle guidance.
+- ADR 0007 recording the layout and collapse decision.
+
+### Changed
+
+- The open margin is now explicitly a reading-mode signature, not a universal content max-width.
+- Canvas surfaces may use the full main column; the sidebar edge and viewport are the boundaries.
+
+### Notes
+
+- Relay 0.1.0 adopts both patterns and cites Quiet 1.1.0.
+
 ## [1.0.0] — 2026-10-24
 
 ### Added

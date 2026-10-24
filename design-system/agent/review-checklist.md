@@ -1,6 +1,6 @@
 # Review checklist
 
-**Quiet 1.0.0 · the definition of done for every delivery.**
+**Quiet 1.1.0 · the definition of done for every delivery.**
 
 Copy this checklist into the delivery's `DESIGN.md` or pull request. Every box is either checked or explicitly waived with a reason and an owner. Do not delete rows.
 
@@ -8,7 +8,7 @@ Copy this checklist into the delivery's `DESIGN.md` or pull request. Every box i
 
 ## A. System integrity
 
-- [ ] The delivery cites `Quiet 1.0.0` and the commit/tag it was built from.
+- [ ] The delivery cites `Quiet 1.1.0` and the commit/tag it was built from.
 - [ ] Every colour is a semantic role from `tokens.json`; no raw hex, no approximate grey.
 - [ ] Every type size, space value, radius and control height comes from the scales.
 - [ ] There is **one accent** and it is used only for links, focus, active navigation, selection or the primary data series.
@@ -25,9 +25,11 @@ Copy this checklist into the delivery's `DESIGN.md` or pull request. Every box i
 - [ ] There are no more than 4 KPIs, one chart and one needs-attention queue.
 - [ ] The main signal is obvious in the first viewport.
 - [ ] There is no decorative band, promo, second sidebar or nested modal.
-- [ ] Whitespace and the content measure (≤1180px, prose ≤62ch) are respected.
+- [ ] Reading pages respect the 1180px measure and 62ch prose; canvas pages fill the main column with 40px padding and no extra max-width.
+- [ ] The main content uses the full space between the sidebar boundary and the viewport on canvas pages; no unexplained 58px gutters.
 - [ ] The density is consistent within each screen (comfortable or compact, not mixed).
 - [ ] The shell uses the 68 / 236 / 56px rail, sidebar and top bar (or the documented responsive behaviour).
+- [ ] A sparse desktop sidebar can collapse to 0px; the state persists and the collapsed sidebar is inert.
 
 ## C. Components
 

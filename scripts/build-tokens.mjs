@@ -261,8 +261,12 @@ ${table(["Step", "Value"], spaceRows)}
 | Sidebar width | ${code(tokens.layout.navWidth)} |
 | Inspector width | ${code(tokens.layout.inspectorWidth)} |
 | Top bar height | ${code(tokens.layout.topbarHeight)} |
-| Content max | ${code(tokens.layout.contentMax)} |
-| Content padding | ${code(tokens.layout.contentPadX)} / ${code(tokens.layout.contentPadY)} |
+| Content max (reading) | ${code(tokens.layout.contentMax)} |
+| Content padding (reading) | ${code(tokens.layout.contentPadX)} / ${code(tokens.layout.contentPadY)} |
+| Canvas max | ${code(tokens.layout.canvasMax)} |
+| Canvas inline padding | ${code(tokens.layout.canvasPadX)} |
+| Sidebar collapsed width | ${code(tokens.layout.sidebarCollapsedWidth)} |
+| Sidebar toggle size | ${code(tokens.layout.sidebarToggleWidth)} |
 | Card padding | ${code(tokens.layout.cardPadding)} |
 | Gap | ${code(tokens.layout.gap)} |
 | Prose measure | ${code(tokens.layout.proseMeasure)} |

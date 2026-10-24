@@ -57,6 +57,7 @@ The reference set is in [`../assets/icons.svg`](../assets/icons.svg) — 26 symb
 | `i-empty` | Empty state |
 | `i-check-sm` | Inline success |
 | `i-clock` | Time, pending, schedule |
+| `i-panel-left` | Collapse / expand the sidebar |
 
 Use the symbol IDs directly from the sprite in web deliveries:
 

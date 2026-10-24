@@ -1,6 +1,6 @@
 # Quiet
 
-**The family design language for Alder. Version 1.0.0 — captured 24 October 2026.**
+**The family design language for Alder. Version 1.1.0 — captured 24 October 2026.**
 
 Chosen from four explorations. This document is the idea and the rules. The machine-readable source is [`tokens.json`](../tokens/tokens.json); the rendered proof is [`reference/index.html`](../reference/index.html).
 
@@ -94,7 +94,7 @@ These are the details that make a Quiet screen recognisable, even without the lo
 4. **The ink primary button.** The only solid near-black surface in a light interface; in dark mode it becomes paper. Never a coloured primary button.
 5. **Tabular figures, right-aligned.** Money and counts use tabular numerals. Columns align on the decimal, not on the left edge.
 6. **The quiet status dot.** A 4px dot inside a small pill, always paired with a word. Colour reinforces; the word carries the meaning.
-7. **The open margin.** A content column that stops at 1180px and leaves air on both sides. The whitespace is part of the identity.
+7. **The open margin — for reading.** A content column that stops at 1180px and leaves air on both sides. The whitespace is part of the identity. **Canvas surfaces are the exception:** boards, wide tables and timelines fill the main column between the sidebar edge and the viewport. The open margin is for reading, not for empty gutters around dense work.
 
 ---
 
@@ -135,6 +135,8 @@ The accent changes value, not identity: it stays green, and it stays the only ac
 | Do | Don't |
 | --- | --- |
 | Let one number, one sentence or one action lead the screen. | Fill the first viewport with equal-weight cards. |
+| Use the canvas mode for boards, wide tables and timelines; fill the main column. | Cap a kanban or a wide table at the 1180px reading measure. |
+| Let a sparse sidebar collapse on desktop; provide a 34px toggle and `⌘\`. | Leave a 236px sidebar mostly empty and stick it to the viewport forever. |
 | Use ink, space and type for hierarchy. | Use colour to distinguish sections. |
 | Use 1px rules at `color.line`; 1px darker rules for section boundaries. | Use drop shadows on cards, tables or inputs. |
 | Use a 34px control height (comfortable) or 30px (compact) consistently within a screen. | Mix comfortable and compact in the same form. |

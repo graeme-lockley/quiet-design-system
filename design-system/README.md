@@ -1,6 +1,6 @@
 # Quiet Design System
 
-**Project `quiet-design-system` · Alder family design language · v1.0.0 · light + night**
+**Project `quiet-design-system` · Alder family design language · v1.1.0 · light + night**
 
 ![Quiet in light and night](reference/screens/quiet-night.png)
 
@@ -56,13 +56,13 @@ The agent brief is [`agent/brief.md`](agent/brief.md); it is the paste-ready com
 | `agent/delivery-contract.md` | Required artifacts, `DESIGN.md` template and file layout for every delivery. |
 | `agent/review-checklist.md` | The complete definition of done. |
 | `agent/examples/` | Worked examples: a Ledger overview and a conversation surface. |
-| `decisions/` | Accepted ADRs: language, accent, night mode, typeface, token source, repository-as-contract. |
+| `decisions/` | Accepted ADRs: language, accent, night mode, typeface, token source, repository-as-contract, layout modes. |
 | `reference/index.html` | Living reference with Light / Dark / System switching. |
 | `reference/screens/` | Captures of the composed screen and the night system. |
 
 ---
 
-## The decisions in six lines
+## The decisions in seven lines
 
 1. **Quiet is the language** — warm paper, ink, one evergreen, hairlines, one sans, type-led hierarchy.
 2. **One accent for the family** — evergreen / verdigris, for interaction and live data only. Identity is the monogram.
@@ -70,6 +70,7 @@ The agent brief is [`agent/brief.md`](agent/brief.md); it is the paste-ready com
 4. **One typeface** — system UI (SF Pro reference), Inter as the cross-platform fallback; tabular numerals.
 5. **Tokens are the source of truth** — JSON, with generated adapters and validation.
 6. **The repository is the contract** — not a component library; every delivery cites it by version.
+7. **Layout has two modes** — reading holds 1180px; canvases fill the main column. A sparse desktop sidebar can collapse to 0px.
 
 The reasoning is in [`decisions/`](decisions/). The four-direction exploration is in [`../archive/exploration/`](../archive/exploration/); it is history, not guidance.
 
@@ -108,4 +109,4 @@ Runs from the repository root. It checks token completeness, contrast, version c
 
 ---
 
-*Version 1.0.0 · 24 October 2026 · MIT licensed. Archive: [`../archive/exploration/`](../archive/exploration/).*
+*Version 1.1.0 · 24 October 2026 · MIT licensed. Archive: [`../archive/exploration/`](../archive/exploration/).*

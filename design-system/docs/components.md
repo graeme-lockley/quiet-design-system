@@ -1,6 +1,6 @@
 # Component contracts
 
-**Anatomy, states and behaviour for the Quiet core set. Version 1.0.0.**
+**Anatomy, states and behaviour for the Quiet core set. Version 1.1.0.**
 
 A component contract is a promise: if you build this, it behaves like this in every app. Visual values come from [`tokens.json`](../tokens/tokens.json); this document describes structure and behaviour. The rendered proof is [`reference/index.html`](../reference/index.html).
 
@@ -54,20 +54,22 @@ A component contract is a promise: if you build this, it behaves like this in ev
 
 **Purpose.** Show the sections of the current app and where the person is.
 
-**Anatomy.** App name (18px/600) + organisation context (11.5px). Group label (10.5px uppercase), items 36px tall with 16px icon and 13.5px label. Optional count badge on the right. Bottom contextual card. Footer: Settings, Sign out.
+**Anatomy.** App name (18px/600) + organisation context (11.5px). Group label (10.5px uppercase), items 36px tall with 16px icon and 13.5px label. Optional count badge on the right. Bottom contextual card. Footer: Settings, Sign out. A 34px `panel-left` toggle lives at the start of the top bar, never inside the sidebar header.
 
-**States.** Default `inkSecondary`; hover `hover` + `ink`; active `selected` + `ink` + accent icon + 2px inset accent rule; focus ring; badge `pill` background.
+**States.** Expanded, collapsed (0px), and mobile sheet. Default `inkSecondary`; hover `hover` + `ink`; active `selected` + `ink` + accent icon + 2px inset accent rule; focus ring; badge `pill` background.
 
 **Behaviour.**
 - 5–7 primary items. Group with one label if necessary; never two levels of groups.
 - Counts only for action or status. No "new" labels.
 - The contextual card is one time-bound task with a progress rule and a single link.
+- **Desktop collapse.** The top-bar toggle collapses the sidebar to 0px with a 200ms width transition; the rail remains. The state persists per device and is applied before first paint. Hide the sidebar from the accessibility tree with `inert` while collapsed. The sidebar never becomes a second icon rail.
+- `⌘\` toggles the same state; focus remains on the toggle. On mobile, the sheet is the only collapsed form.
 - `1`–`9` jump to sections when the shell has focus.
 - Scrolling is vertical and independent; the app name stays visible.
 
-**Accessibility.** `<nav aria-label="{App}">`; active `aria-current="page"`; badge text included in the accessible name ("Approvals, 3 waiting"); a skip link precedes the sidebar.
+**Accessibility.** `<nav aria-label="{App}">`; active `aria-current="page"`; badge text included in the accessible name ("Approvals, 3 waiting"); a skip link precedes the sidebar. The toggle has `aria-expanded` and `aria-controls`; the collapsed sidebar is `inert`; the toggle stays in the tab order.
 
-**Do / Don't.** Do collapse to a sheet below 860px. Don't add a second sidebar inside a page.
+**Do / Don't.** Do offer desktop collapse for sparse sidebars, and do collapse to a sheet below 860px. Don't add a second sidebar inside a page, and don't replace the sidebar with an icon-only strip.
 
 ---
 
@@ -104,6 +106,29 @@ A component contract is a promise: if you build this, it behaves like this in ev
 - No tabs in the header.
 
 **Accessibility.** The page title is `<h1>`; the eyebrow is not a heading; page actions are grouped in a labelled region.
+
+---
+
+### 1.5 Page container
+
+**Purpose.** Decide how much of the main column a page should use.
+
+**Modes.**
+| Mode | Use | Measure | Behaviour |
+| --- | --- | --- | --- |
+| **Reading** | overview prose, settings, forms, long copy | 1180px centred | Open margins; content never touches the sidebar or viewport edge |
+| **Canvas** | boards, wide tables, timelines, visual canvases | Fluid, 40px inline padding | Fills the main column between the sidebar edge and the viewport |
+
+**Behaviour.**
+- Choose the mode by the task. A board is a canvas; a settings form is reading.
+- A canvas never adds a second max-width or a card frame around the whole page.
+- Reading pages can contain a canvas region; the region, not the page, becomes fluid.
+- Both modes share the same type and spacing scales; full width is not permission for denser content.
+- On mobile both modes collapse to a single column with 16px padding.
+
+**Accessibility.** Keep the content landmark and skip-link target on the page container in both modes. Full width does not change the reading order or the maximum line length of prose.
+
+**Do / Don't.** Do let a board use the entire main column. Don't leave 58px of empty gutter on each side of a dense canvas because a reading max-width leaked into it.
 
 ---
 

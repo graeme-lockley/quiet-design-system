@@ -1,6 +1,6 @@
 # Quiet Design System — Alder family design language
 
-Project: quiet-design-system. Version 1.0.0. License: MIT. Canonical source: design-system/tokens/tokens.json.
+Project: quiet-design-system. Version 1.1.0. License: MIT. Canonical source: design-system/tokens/tokens.json.
 
 > A technology-neutral design language for a family of applications: principles, semantic tokens, UX architecture, component contracts, a paste-ready agent brief and a rendered reference in light and night. Agents should start with AGENTS.md and use tokens.json as the source of truth.
 
@@ -29,6 +29,7 @@ Project: quiet-design-system. Version 1.0.0. License: MIT. Canonical source: des
 - [0004 System typeface](design-system/decisions/0004-system-typeface.md)
 - [0005 Tokens are the source of truth](design-system/decisions/0005-tokens-are-the-source-of-truth.md)
 - [0006 Repository is the contract](design-system/decisions/0006-repository-is-the-contract.md)
+- [0007 Layout modes and sidebar collapse](design-system/decisions/0007-layout-modes-and-sidebar-collapse.md)
 
 ## Do not use as guidance
 
