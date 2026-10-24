@@ -1,0 +1,35 @@
+# Quiet Design System — Alder family design language
+
+Project: quiet-design-system. Version 1.0.0. License: MIT. Canonical source: design-system/tokens/tokens.json.
+
+> A technology-neutral design language for a family of applications: principles, semantic tokens, UX architecture, component contracts, a paste-ready agent brief and a rendered reference in light and night. Agents should start with AGENTS.md and use tokens.json as the source of truth.
+
+## Start here
+
+- [AGENTS.md](AGENTS.md): the standing agent contract — reading order, non-negotiables, delivery workflow, definition of done.
+- [design-system/README.md](design-system/README.md): the system map and decisions.
+- [design-system/tokens/tokens.json](design-system/tokens/tokens.json): canonical semantic tokens for light and night.
+- [design-system/tokens/token-reference.md](design-system/tokens/token-reference.md): human-readable token tables.
+- [design-system/docs/design-language.md](design-system/docs/design-language.md): the idea, principles, accent policy and voice.
+- [design-system/docs/ux-architecture.md](design-system/docs/ux-architecture.md): family shell, navigation, page grammar, states.
+- [design-system/docs/components.md](design-system/docs/components.md): component contracts.
+- [design-system/docs/dark-mode.md](design-system/docs/dark-mode.md): the night-mode rules.
+- [design-system/docs/iconography.md](design-system/docs/iconography.md): the 24px / 1.5px icon rules and reference sprite.
+- [design-system/agent/brief.md](design-system/agent/brief.md): paste this into a design agent for a screen.
+- [design-system/agent/delivery-contract.md](design-system/agent/delivery-contract.md): what a delivery must return.
+- [design-system/agent/review-checklist.md](design-system/agent/review-checklist.md): the definition of done.
+- [design-system/reference/index.html](design-system/reference/index.html): the rendered proof; compare, do not copy.
+- [LICENSE](LICENSE): MIT license.
+
+## Decisions
+
+- [0001 Adopt Quiet](design-system/decisions/0001-adopt-quiet.md)
+- [0002 One family accent](design-system/decisions/0002-one-family-accent.md)
+- [0003 Designed night mode](design-system/decisions/0003-designed-night-mode.md)
+- [0004 System typeface](design-system/decisions/0004-system-typeface.md)
+- [0005 Tokens are the source of truth](design-system/decisions/0005-tokens-are-the-source-of-truth.md)
+- [0006 Repository is the contract](design-system/decisions/0006-repository-is-the-contract.md)
+
+## Do not use as guidance
+
+- [archive/exploration](archive/exploration/): historical four-direction exploration. Quiet was chosen; the other directions are not current.

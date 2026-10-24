@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en" data-mode="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiet — Alder design system reference</title>
+<meta name="description" content="The Quiet family design language. Light and night. Reference system, not a product screen." />
+<meta name="color-scheme" content="light dark" />
+<script>
+  (function () {
+    try {
+      var pref = localStorage.getItem("quiet-mode") || "system";
+      var dark = pref === "dark" || (pref === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.setAttribute("data-mode", dark ? "dark" : "light");
+    } catch (e) {
+      document.documentElement.setAttribute("data-mode", "light");
+    }
+  })();
+</script>
+<link rel="stylesheet" href="reference.css" />
+</head>
+<body>
+<!-- icon sprites ----------------------------------------------------------- -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10.5h18"/><path d="M16 14.5h2.5"/></symbol>
+  <symbol id="i-arrows" viewBox="0 0 24 24"><path d="M7.5 16.5 16.5 7.5"/><path d="M8.5 7.5h8v8"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M13.5 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-5.5-5.5Z"/><path d="M13.5 3.5V9H19"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.4 2.4 4.6-5.1"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.1 2.7-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><path d="M15.8 5.6a3.2 3.2 0 0 1 0 6.4"/><path d="M17.2 15.4c1.8.6 2.9 2.1 3.3 4.1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.2 5.5 6v5.2c0 4.3 2.8 7.5 6.5 9.6 3.7-2.1 6.5-5.3 6.5-9.6V6L12 3.2Z"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7.5h9M17.5 7.5H20M4 16.5h3M11.5 16.5H20"/><circle cx="15.2" cy="7.5" r="2.1"/><circle cx="9.2" cy="16.5" r="2.1"/></symbol>
+  <symbol id="i-audit" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4.2 4.2"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.2 9a5.8 5.8 0 1 1 11.6 0c0 3.8 1.4 4.9 2 5.9H4.2c.6-1 2-2.1 2-5.9Z"/><path d="M10 18.8a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3.2v3.6M16 3.2v3.6"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6.5h16M7 12h10M10 17.5h4"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M8 11.5l4 4 4-4"/><path d="M4.5 19.5h15"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+  <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 21 20H3L12 3.5Z"/><path d="M12 9v5M12 17.2v.2"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.1 2.4c-.5.2-.7.6-.7 1.1v.5"/><path d="M12 16.6v.2"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9.5 4H6a1.8 1.8 0 0 0-1.8 1.8v12.4A1.8 1.8 0 0 0 6 20h3.5"/><path d="m15 8 4 4-4 4"/><path d="M19 12H9.5"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10.5 13.5"/><path d="M21 3 14.5 21l-4-7.5L3 9.5 21 3Z"/></symbol>
+  <symbol id="i-empty" viewBox="0 0 24 24"><path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5v-7Z"/><path d="M5 8.5 12 13l7-4.5M12 13v7"/></symbol>
+  <symbol id="i-check-sm" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5L20 6.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+</svg>
+
+<!-- top bar ---------------------------------------------------------------- -->
+<header class="site-top">
+  <a class="brand" href="#top" aria-label="Quiet reference home">
+    <span class="brand-mark">A</span>
+    <span class="brand-word">Quiet</span>
+    <span class="brand-ver">v1.0.0</span>
+  </a>
+  <nav class="site-nav" aria-label="Reference sections">
+    <a href="#language">Language</a>
+    <a href="#screen">In context</a>
+    <a href="#colour">Colour</a>
+    <a href="#type">Type</a>
+    <a href="#components">Components</a>
+    <a href="#accent">Accent</a>
+    <a href="#night">Night</a>
+    <a href="#handoff">Handoff</a>
+  </nav>
+  <div class="top-tools">
+    <div class="mode-switch" role="group" aria-label="Colour mode">
+      <button data-mode-btn="light" aria-pressed="false">Light</button>
+      <button data-mode-btn="dark" aria-pressed="false">Dark</button>
+      <button data-mode-btn="system" aria-pressed="true">System</button>
+    </div>
+    <a class="top-link" href="../../archive/exploration/index.html?style=quiet">Explorer <svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- hero ----------------------------------------------------------------- -->
+  <section class="hero">
+    <div class="kicker">Alder · family design language · v1.0.0</div>
+    <h1>Quiet<span class="dot">.</span></h1>
+    <p class="hero-lede">Confidence, without volume. One sans-serif, warm paper, a single deep green and an almost obsessive respect for the line. A complete language for a family of applications — captured light and dark, for a design agent to build from.</p>
+    <div class="hero-meta">
+      <div><span>Modes</span><strong>Light + night</strong></div>
+      <div><span>Accent</span><strong>One green, used rarely</strong></div>
+      <div><span>Type</span><strong>One sans, tabular numbers</strong></div>
+      <div><span>Elevation</span><strong>Hairlines, not shadows</strong></div>
+    </div>
+  </section>
+
+  <!-- principles ------------------------------------------------------------ -->
+  <section class="section" id="language">
+    <div class="section-head">
+      <span class="sec-num">01</span>
+      <h2>The idea</h2>
+      <p class="sec-note">The interface recedes; the information does not. These six principles decide everything that follows.</p>
+    </div>
+    <div class="principles">
+      <div class="principle"><div class="n">01</div><h3>Confidence through omission</h3><p>Every element earns its place. Try removing something before adding a border, a background or an icon.</p></div>
+      <div class="principle"><div class="n">02</div><h3>Type carries hierarchy</h3><p>Size, weight, measure and space do the work. Colour distinguishes meaning, not sections.</p></div>
+      <div class="principle"><div class="n">03</div><h3>A line, not a shadow</h3><p>Cards are containers, not floating objects. Elevation is reserved for things that genuinely sit above the page.</p></div>
+      <div class="principle"><div class="n">04</div><h3>One accent, spent rarely</h3><p>The green marks action, focus and live data. It is never wallpaper, and never a second brand colour.</p></div>
+      <div class="principle"><div class="n">05</div><h3>Motion settles</h3><p>120–280 ms, one easing. Movement explains a change; it never performs. Nothing loops for decoration.</p></div>
+      <div class="principle"><div class="n">06</div><h3>Accessible by default</h3><p>AA contrast, visible focus, complete keyboard paths and reduced motion are material, not a review step.</p></div>
+    </div>
+  </section>
+
+  <!-- screen ---------------------------------------------------------------- -->
+  <section class="section" id="screen">
+    <div class="section-head">
+      <span class="sec-num">02</span>
+      <h2>In context</h2>
+      <p class="sec-note">One representative screen, composed with the whole language. The family grammar is the same in every app; the nouns change.</p>
+    </div>
+    <div class="screen-frame">
+      <div class="frame-bar"><span>Alder / Ledger / Overview</span><span>illustrative · 1440 × 900</span></div>
+      <div class="screen">
+        <aside class="s-rail" aria-label="Applications">
+          <div class="s-brand">A</div>
+          <div class="s-app is-active" title="Ledger">L</div>
+          <div class="s-app" title="Studio">S</div>
+          <div class="s-app" title="Atlas">A</div>
+          <div class="s-app" title="Signal">G</div>
+          <div class="s-rail-foot">
+            <div class="s-app" title="Help"><svg class="ico" style="width:12px;height:12px" aria-hidden="true"><use href="#i-help"/></svg></div>
+            <div class="s-avatar">GL</div>
+          </div>
+        </aside>
+        <aside class="s-nav" aria-label="Ledger sections">
+          <div class="s-nav-title">Ledger</div>
+          <div class="s-nav-sub">Alder Family Office</div>
+          <div class="s-nav-label">Workspace</div>
+          <div class="s-item is-active"><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg>Overview</div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg>Accounts</div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-arrows"/></svg>Payments</div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg>Statements</div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Approvals<span class="s-count">3</span></div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Team</div>
+          <div class="s-nav-label">Administration</div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>Recipients</div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-sliders"/></svg>Integrations</div>
+          <div class="s-item"><svg class="ico" aria-hidden="true"><use href="#i-audit"/></svg>Audit log</div>
+          <div class="s-nav-card">
+            <b>Month-end close</b><span>2 days remaining</span>
+            <div class="s-progress"><i></i></div>
+            <a>Open checklist</a>
+          </div>
+        </aside>
+        <div class="s-main">
+          <div class="s-top">
+            <span>Alder / Ledger / <b style="color:var(--ink);font-weight:500">Overview</b></span>
+            <div class="s-search"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Search or jump to…<kbd>⌘K</kbd></div>
+            <span class="s-bell"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></span>
+            <div class="s-avatar">GL</div>
+          </div>
+          <div class="s-content">
+            <div class="s-eyebrow">Saturday, 24 October · ZAR</div>
+            <h3 class="s-title">Good afternoon, Graeme</h3>
+            <p class="s-sub">Three approvals are waiting. Everything else is settled.</p>
+
+            <div class="s-kpis">
+              <div class="s-kpi">
+                <div class="l">Total balance</div>
+                <div class="v">R 4,286,410<em>.22</em></div>
+                <div class="m"><span class="s-pill">+2.4%</span> vs September</div>
+              </div>
+              <div class="s-kpi">
+                <div class="l">Available</div>
+                <div class="v">R 2,940,000<em>.00</em></div>
+                <div class="m">3 accounts · operations + trust</div>
+              </div>
+              <div class="s-kpi">
+                <div class="l">Awaiting approval</div>
+                <div class="v">3</div>
+                <div class="m">R 118,400.00 in total</div>
+              </div>
+            </div>
+
+            <div class="s-grid">
+              <div class="s-card">
+                <div class="s-card-head"><b>Cash flow</b><span>Apr — Sep 2026</span></div>
+                <svg class="s-chart" viewBox="0 0 400 86" preserveAspectRatio="none" aria-hidden="true">
+                  <g stroke="var(--chart-grid)" stroke-width="1" stroke-dasharray="2 5">
+                    <line x1="0" y1="18" x2="400" y2="18"/>
+                    <line x1="0" y1="44" x2="400" y2="44"/>
+                    <line x1="0" y1="70" x2="400" y2="70"/>
+                  </g>
+                  <path d="M0 64 C30 58 55 52 80 55 C110 58 130 44 160 42 C190 40 210 46 240 38 C270 30 292 22 320 27 C348 32 370 20 400 14 L400 86 L0 86 Z" fill="var(--chart-fill)"/>
+                  <path d="M0 64 C30 58 55 52 80 55 C110 58 130 44 160 42 C190 40 210 46 240 38 C270 30 292 22 320 27 C348 32 370 20 400 14" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <div class="s-x"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div>
+              </div>
+              <div class="s-card">
+                <div class="s-card-head"><b>Needs attention</b><span>3 waiting</span></div>
+                <div class="s-att">
+                  <div class="s-att-row"><div class="s-att-av">SN</div><div><b>Sipho Naidoo</b><span>Payment approval</span></div><button class="pri">Approve</button></div>
+                  <div class="s-att-row"><div class="s-att-av">MK</div><div><b>Makro</b><span>Invoice #MK-8841</span></div><button>Review</button></div>
+                  <div class="s-att-row"><div class="s-att-av">LB</div><div><b>L. Botha</b><span>New payee request</span></div><button>Review</button></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="s-card" style="margin-top:7px">
+              <div class="s-card-head"><b>Recent activity</b><span>3 latest movements</span></div>
+              <div class="s-table-wrap">
+              <table class="s-table">
+                <thead><tr><th scope="col">Date</th><th scope="col">Description</th><th scope="col">Account</th><th scope="col" style="text-align:right">Amount</th><th scope="col">Status</th></tr></thead>
+                <tbody>
+                  <tr><td>24 Oct</td><td class="d">Woolworths Financial Services</td><td>Operations · 6204</td><td class="a">−R 3,842.18</td><td><span class="s-status">Cleared</span></td></tr>
+                  <tr><td>23 Oct</td><td class="d">Client settlement — Makro</td><td>Client trust · 8841</td><td class="a">+R 118,400.00</td><td><span class="s-status">Cleared</span></td></tr>
+                  <tr><td>23 Oct</td><td class="d">AWS EMEA</td><td>Operations · 6204</td><td class="a">−R 12,409.77</td><td><span class="s-status pending">Pending</span></td></tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+            <div class="s-foot"><span>Alder Ledger</span><span>·</span><span>Reconciled 14:02 SAST</span><span>·</span><span>Illustrative data</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- colour ----------------------------------------------------------------- -->
+  <section class="section" id="colour">
+    <div class="section-head">
+      <span class="sec-num">03</span>
+      <h2>Colour</h2>
+      <p class="sec-note">Semantic roles, not a palette of pretty names. Every screen uses the role; the mode decides the value. Switch mode above to see the whole system change.</p>
+    </div>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="--sw: var(--canvas)"></div><div class="meta"><div class="token">canvas</div><div class="role">The page</div><div class="value" data-token="--canvas">#F7F6F2</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--surface)"></div><div class="meta"><div class="token">surface</div><div class="role">Cards, panels</div><div class="value" data-token="--surface">#FFFFFF</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--surface-raised)"></div><div class="meta"><div class="token">surface-raised</div><div class="role">Overlays</div><div class="value" data-token="--surface-raised">#FBFAF7</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--surface-sunken)"></div><div class="meta"><div class="token">surface-sunken</div><div class="role">Recessed</div><div class="value" data-token="--surface-sunken">#F1F0EA</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--ink)"></div><div class="meta"><div class="token">ink</div><div class="role">Primary text</div><div class="value" data-token="--ink">#15150F</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--ink-2)"></div><div class="meta"><div class="token">ink-2</div><div class="role">Secondary text</div><div class="value" data-token="--ink-2">#5F5F58</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--ink-3)"></div><div class="meta"><div class="token">ink-3</div><div class="role">Tertiary text</div><div class="value" data-token="--ink-3">#6C6C64</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--line)"></div><div class="meta"><div class="token">line</div><div class="role">Hairline</div><div class="value" data-token="--line">#E6E3DA</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--line-strong)"></div><div class="meta"><div class="token">line-strong</div><div class="role">Section rule</div><div class="value" data-token="--line-strong">#D4D0C4</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--accent)"></div><div class="meta"><div class="token">accent</div><div class="role">Action · data</div><div class="value" data-token="--accent">#1F4D3D</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--accent-wash)"></div><div class="meta"><div class="token">accent-wash</div><div class="role">Selection</div><div class="value" data-token="--accent-wash">#E7EEE8</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--primary)"></div><div class="meta"><div class="token">primary</div><div class="role">Primary action</div><div class="value" data-token="--primary">#171713</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--positive)"></div><div class="meta"><div class="token">positive</div><div class="role">Inflow · cleared</div><div class="value" data-token="--positive">#2C6A4F</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--negative)"></div><div class="meta"><div class="token">negative</div><div class="role">Outflow · error</div><div class="value" data-token="--negative">#963A2C</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--warning)"></div><div class="meta"><div class="token">warning</div><div class="role">Pending · attention</div><div class="value" data-token="--warning">#8A6416</div></div></div>
+      <div class="swatch"><div class="chip" style="--sw: var(--focus)"></div><div class="meta"><div class="token">focus</div><div class="role">Focus ring</div><div class="value" data-token="--focus">#1F4D3D</div></div></div>
+    </div>
+    <div class="swatch-note">
+      <span><b>16 roles, two modes.</b> No raw hex in a screen; always the role.</span>
+      <span>Text contrast verified at WCAG AA in both modes.</span>
+    </div>
+  </section>
+
+  <!-- type ------------------------------------------------------------------- -->
+  <section class="section" id="type">
+    <div class="section-head">
+      <span class="sec-num">04</span>
+      <h2>Type</h2>
+      <p class="sec-note">One family. Tracking tightens as size grows; labels open up. Numbers are tabular wherever they can be compared.</p>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Display 1</b>56 / 1.0 / −0.04em<br>first run · marketing</div>
+      <div class="type-sample"><div class="t-display-1">Quiet.</div></div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Display 2</b>44 / 1.02 / −0.035em<br>page title</div>
+      <div class="type-sample"><div class="t-display-2">Good afternoon, Graeme</div></div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Title 1</b>28 / 1.15 / −0.025em<br>object detail</div>
+      <div class="type-sample"><div class="t-title-1">Cash flow and commitments</div></div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Heading</b>17 / 1.3 / −0.01em<br>card &amp; section</div>
+      <div class="type-sample"><div class="t-heading">Needs your attention</div></div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Body</b>14 / 1.55 / 0<br>reading</div>
+      <div class="type-sample"><p class="t-body">Three approvals are waiting. Everything else is settled, reconciled and ready for month-end close. Nothing here needs your attention twice.</p></div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Label</b>10.5 / 0.14em<br>eyebrows · fields</div>
+      <div class="type-sample"><div class="t-label">Available balance · ZAR</div></div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Numeric</b>26 / 1.15 / tabular<br>money · counts</div>
+      <div class="type-sample"><div class="t-num">R 4,286,410.22</div></div>
+    </div>
+  </section>
+
+  <!-- form & measure ---------------------------------------------------------- -->
+  <section class="section" id="form">
+    <div class="section-head">
+      <span class="sec-num">05</span>
+      <h2>Form &amp; measure</h2>
+      <p class="sec-note">A 4px rhythm, a 1180px measure and five radii. Space is the primary separator; the rule is the second.</p>
+    </div>
+    <div class="measure-grid">
+      <div class="measure">
+        <h3>Spacing · 4px base</h3>
+        <div class="space-list">
+          <div class="space-line"><span>4</span><i style="width:4px"></i><span>4px</span></div>
+          <div class="space-line"><span>8</span><i style="width:8px"></i><span>8px</span></div>
+          <div class="space-line"><span>16</span><i style="width:16px"></i><span>16px</span></div>
+          <div class="space-line"><span>24</span><i style="width:24px"></i><span>24px</span></div>
+          <div class="space-line"><span>32</span><i style="width:32px"></i><span>32px</span></div>
+          <div class="space-line"><span>48</span><i style="width:48px"></i><span>48px</span></div>
+        </div>
+        <h3 style="margin-top:26px">Radius</h3>
+        <div class="radius-line">
+          <div class="radius-chip" style="--rc: var(--r-xs)">2</div>
+          <div class="radius-chip" style="--rc: var(--r-sm)">4</div>
+          <div class="radius-chip" style="--rc: var(--r-md)">8</div>
+          <div class="radius-chip" style="--rc: var(--r-lg)">14</div>
+          <div class="radius-chip" style="--rc: var(--r-pill)">pill</div>
+        </div>
+      </div>
+      <div class="measure">
+        <h3>Elevation</h3>
+        <div class="elev-line">
+          <div class="elev-box">e0 · card</div>
+          <div class="elev-box e2">e2 · popover</div>
+          <div class="elev-box e3">e3 · dialog</div>
+        </div>
+        <div class="panel-note" style="border-top:0;padding-top:16px;margin-top:10px;font-size:9.5px;line-height:1.75;color:var(--ink-2);font-family:var(--font-ui)">
+          Cards, tables and inputs are <b>e0</b>: a 1px line, 8px radius and space. Shadows are reserved for transient surfaces.<br><br>
+          <b>Measure:</b> content max 1180px · prose 62ch · rail 68px · sidebar 236px · top bar 56px.<br><br>
+          <b>Density:</b> comfortable 44px rows / 34px controls; compact 36px / 30px. Never mix within a form.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- components --------------------------------------------------------------- -->
+  <section class="section" id="components">
+    <div class="section-head">
+      <span class="sec-num">06</span>
+      <h2>Components</h2>
+      <p class="sec-note">The proof set. Each panel is rendered with the same tokens as a real screen; the small monospace note names the contract.</p>
+    </div>
+    <div class="panels">
+
+      <div class="panel">
+        <h3>Actions <span>button</span></h3>
+        <div class="btn-row">
+          <button class="btn btn-primary"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>New payment</button>
+          <button class="btn"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg>This month</button>
+          <button class="btn btn-ghost">Cancel</button>
+        </div>
+        <div class="btn-row" style="margin-top:9px">
+          <button class="btn btn-destructive">Delete</button>
+          <button class="btn btn-sm">Small</button>
+          <button class="btn" disabled>Disabled</button>
+        </div>
+        <div class="panel-note">One primary per view · primary = ink/paper, never accent · 34px / 4px radius</div>
+      </div>
+
+      <div class="panel">
+        <h3>Input <span>field</span></h3>
+        <div class="field-pair">
+          <div class="field">
+            <label for="ref-payfrom">Pay from</label>
+            <div class="input" id="ref-payfrom">Operations · 6204 <span class="caret">▾</span></div>
+            <div class="help">Available R 2,940,000.00</div>
+          </div>
+          <div class="field error">
+            <label for="ref-amount">Amount</label>
+            <div class="input" id="ref-amount">R 0.00</div>
+            <div class="help"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>Enter an amount greater than zero.</div>
+          </div>
+        </div>
+        <div class="field" style="margin-top:10px">
+          <label for="ref-search">Find a recipient</label>
+          <div class="input placeholder" id="ref-search"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Search by name or account</div>
+        </div>
+        <div class="panel-note">36px · label above · error replaces help · focus 2px ring · no placeholder-as-label</div>
+      </div>
+
+      <div class="panel">
+        <h3>Selection <span>control</span></h3>
+        <div class="seg" role="group" aria-label="Chart range">
+          <button>1M</button><button class="is-active" aria-pressed="true">6M</button><button>1Y</button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:9px; margin-top:14px">
+          <label class="check-row"><input type="checkbox" checked /> Notify me when this clears</label>
+          <label class="check-row"><input type="radio" name="ref-radio" checked /> Use the operations account</label>
+          <div class="check-row"><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="ref-switch-label"></button><span id="ref-switch-label">Remember this payee</span></div>
+        </div>
+        <div class="panel-note">Switch only for instant effects · checkbox when Save is required · arrow keys move radios</div>
+      </div>
+
+      <div class="panel">
+        <h3>Status &amp; identity <span>pill · avatar</span></h3>
+        <div class="btn-row" style="gap:6px">
+          <span class="pill positive">Cleared</span>
+          <span class="pill warning">Pending</span>
+          <span class="pill negative">Failed</span>
+          <span class="pill">Scheduled</span>
+          <span class="pill">Draft</span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="entity"><div class="avatar">SN</div><div><div class="name">Sipho Naidoo</div><div class="meta">Payment approval · awaiting you</div></div><div class="trail">R 48,200.00</div></div>
+          <div class="entity"><div class="avatar">MK</div><div><div class="name">Makro</div><div class="meta">Invoice #MK-8841 · due today</div></div><div class="trail">R 62,900.00</div></div>
+        </div>
+        <div class="panel-note">Status = dot + word · 26px initials avatar · app monograms are square, people are round</div>
+      </div>
+
+      <div class="panel">
+        <h3>Stat <span>kpi</span></h3>
+        <div class="kpi-row">
+          <div class="kpi-demo">
+            <div class="l">Total balance</div>
+            <div class="v">R 4,286,410<em>.22</em></div>
+            <div class="m"><span class="delta">+2.4%</span> vs September</div>
+          </div>
+          <div class="kpi-demo">
+            <div class="l">Awaiting approval</div>
+            <div class="v">3</div>
+            <div class="m"><span class="delta neutral">R 118,400</span> in total</div>
+          </div>
+        </div>
+        <div class="panel-note">26px tabular · 3–4 per overview · a delta only when it is real · sparklines optional</div>
+      </div>
+
+      <div class="panel">
+        <h3>Data table <span>table</span></h3>
+        <table class="table-demo">
+          <thead><tr><th scope="col">Date</th><th scope="col">Description</th><th scope="col" style="text-align:right">Amount</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>24 Oct</td><td class="d">Woolworths</td><td class="a">−R 3,842.18</td><td><span class="pill positive">Cleared</span></td></tr>
+            <tr><td>23 Oct</td><td class="d">Client settlement</td><td class="a">+R 118,400.00</td><td><span class="pill positive">Cleared</span></td></tr>
+            <tr><td>23 Oct</td><td class="d">AWS EMEA</td><td class="a">−R 12,409.77</td><td><span class="pill warning">Pending</span></td></tr>
+          </tbody>
+        </table>
+        <div class="panel-note">44px rows · row separators only · numeric right + tabular · no zebra</div>
+      </div>
+
+      <div class="panel">
+        <h3>Feedback <span>alert · toast · empty</span></h3>
+        <div class="alert">
+          <svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>
+          <div><b>Statement unavailable</b><p>We could not load the September statement. Your account data is safe. Try again.</p></div>
+        </div>
+        <div class="toast" style="margin-top:9px">
+          <svg class="ico" aria-hidden="true"><use href="#i-check-sm"/></svg>
+          <b>Payment scheduled for 24 October</b><span>View</span>
+        </div>
+        <div class="empty" style="margin-top:9px">
+          <svg class="ico" aria-hidden="true"><use href="#i-empty"/></svg>
+          <b>No statements yet</b>
+          <p>Close your first month to create a statement.</p>
+          <button class="btn btn-sm">Close September</button>
+        </div>
+        <div class="panel-note">Errors say what happened and what still works · toasts confirm out-of-sight work · empty states teach</div>
+      </div>
+
+      <div class="panel">
+        <h3>Conversation <span>family-specific</span></h3>
+        <div class="msg human">
+          <div class="avatar sq">GL</div>
+          <div class="body"><div class="who"><b>Graeme</b><span>14:02</span></div><p>Prepare the September cash-flow summary for Sipho. Flag anything over R 50,000.</p></div>
+        </div>
+        <div class="msg" style="margin-top:12px">
+          <div class="avatar sq">AI</div>
+          <div class="body"><div class="who"><b>Aida</b><span>Digital person · 14:02</span></div><p>September net movement was +R 71,204. Three items exceed R 50,000 — I have grouped them and left the approvals untouched.</p></div>
+        </div>
+        <div class="composer" style="margin-top:12px">
+          <span>Message Aida…</span>
+          <div class="send"><svg class="ico" aria-hidden="true"><use href="#i-send"/></svg></div>
+        </div>
+        <div class="composer-hint">Enter to send · ⌘Enter for a new line</div>
+        <div class="panel-note">No chat bubbles · human message carries the accent rule · agent uses the same names and monograms</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- accent policy ------------------------------------------------------------ -->
+  <section class="section" id="accent">
+    <div class="section-head">
+      <span class="sec-num">07</span>
+      <h2>The accent policy</h2>
+      <p class="sec-note">One green for the whole family. It marks action, focus and live data — never the primary button, never a status, never an app.</p>
+    </div>
+    <div class="accent-grid">
+      <div class="accent-card">
+        <div class="tag">Action · focus</div>
+        <h3>Where you can act</h3>
+        <p>Links, focus rings, the active section and selected rows. The accent says “this is live”.</p>
+        <div class="demo">
+          <span class="accent-link">View statement <svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></span>
+          <span class="focus-demo" aria-hidden="true">Payee</span>
+        </div>
+      </div>
+      <div class="accent-card">
+        <div class="tag">Data</div>
+        <h3>What is moving</h3>
+        <p>The primary series in a chart and a highlighted value. One accent line; the rest is muted.</p>
+        <div class="demo">
+          <svg class="mini-chart" viewBox="0 0 120 30" aria-hidden="true">
+            <path d="M1 25 C15 23 22 19 34 20 C46 21 52 14 64 13 C76 12 86 8 100 10 C110 11 116 7 119 5" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span style="font-family:var(--font-mono);font-size:8px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase">Primary series</span>
+        </div>
+      </div>
+      <div class="accent-card">
+        <div class="tag">Never</div>
+        <h3>Not a button, not a status</h3>
+        <p>Primary actions stay ink or paper. Positive, negative and warning keep their own semantics.</p>
+        <div class="demo never">
+          <button class="btn btn-primary">Approve</button>
+          <span class="pill positive">Cleared</span>
+          <span class="pill warning">Pending</span>
+        </div>
+      </div>
+    </div>
+    <div class="monogram-policy">
+      <div class="monograms" aria-label="App monograms">
+        <div class="mono-tile active">L</div>
+        <div class="mono-tile">S</div>
+        <div class="mono-tile">A</div>
+        <div class="mono-tile">G</div>
+      </div>
+      <p><b>Identity lives in the monogram, not the accent.</b> If you later want per-app orientation, tint only the monogram tile and the 2px active indicator. Never tint buttons, links, charts, status, selection or focus — those belong to the family accent, where colour has meaning.</p>
+    </div>
+  </section>
+
+  <!-- night -------------------------------------------------------------------- -->
+  <section class="section" id="night">
+    <div class="section-head">
+      <span class="sec-num">08</span>
+      <h2>Light &amp; night</h2>
+      <p class="sec-note">The same bones, a different light. The accent gets lighter rather than louder; the primary action inverts to paper. Neither mode is an inversion of the other.</p>
+    </div>
+    <div class="split">
+      <div class="pane" data-mode="light">
+        <div class="pane-label"><span>Light</span><b>Paper · #F7F6F2</b></div>
+        <div class="pane-body">
+          <h3 class="pane-title">Total balance</h3>
+          <p class="pane-sub">Across 3 accounts · updated 14:02</p>
+          <div class="kpi-demo">
+            <div class="l">Available now</div>
+            <div class="v">R 2,940,000<em>.00</em></div>
+            <div class="m"><span class="delta">+2.4%</span> vs September</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-sm">New payment</button>
+            <button class="btn btn-sm">This month</button>
+            <span class="pill positive">Cleared</span>
+          </div>
+        </div>
+      </div>
+      <div class="pane" data-mode="dark">
+        <div class="pane-label"><span>Night</span><b>Graphite · #0B0C0B</b></div>
+        <div class="pane-body">
+          <h3 class="pane-title">Total balance</h3>
+          <p class="pane-sub">Across 3 accounts · updated 14:02</p>
+          <div class="kpi-demo">
+            <div class="l">Available now</div>
+            <div class="v">R 2,940,000<em>.00</em></div>
+            <div class="m"><span class="delta">+2.4%</span> vs September</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-sm">New payment</button>
+            <button class="btn btn-sm">This month</button>
+            <span class="pill positive">Cleared</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="night-note">
+      <div><b>Surfaces</b><span>Three levels: canvas, surface, raised. No pure black, no pure white; hairlines carry the structure.</span></div>
+      <div><b>Action</b><span>Primary inverts from ink to paper. The accent stays out of the filled button.</span></div>
+      <div><b>Accent</b><span>Evergreen becomes verdigris. Same hue, lighter value, still only one accent.</span></div>
+    </div>
+  </section>
+
+  <!-- handoff ------------------------------------------------------------------- -->
+  <section class="section" id="handoff">
+    <div class="section-head">
+      <span class="sec-num">09</span>
+      <h2>Handoff</h2>
+      <p class="sec-note">The reference is the proof; the tokens and the brief are the contract. Give a design agent the brief and the token file first.</p>
+    </div>
+    <div class="handoff">
+      <div>
+        <p class="handoff-lede">This pack is deliberately technology-agnostic. It describes roles, behaviour and constraints — not React, Swift, Tailwind or CSS. The reference page is a rendering to compare against, not the source of truth.</p>
+        <div class="file-list">
+          <a class="file-link" href="../../AGENTS.md"><span class="n">00</span><div><div class="file-name">Agent instructions</div><div class="file-desc">Start here. The standing contract for any delivery.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+          <a class="file-link" href="../agent/brief.md"><span class="n">01</span><div><div class="file-name">Screen brief</div><div class="file-desc">The paste-ready task with context, rules and a token card.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+          <a class="file-link" href="../agent/delivery-contract.md"><span class="n">02</span><div><div class="file-name">Delivery contract</div><div class="file-desc">What every delivery must return, and how to prove it.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+          <a class="file-link" href="../tokens/tokens.json"><span class="n">03</span><div><div class="file-name">Tokens</div><div class="file-desc">The canonical source of truth, light and night.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+          <a class="file-link" href="../docs/design-language.md"><span class="n">04</span><div><div class="file-name">Design language</div><div class="file-desc">The idea, principles and accent policy.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+          <a class="file-link" href="../docs/components.md"><span class="n">05</span><div><div class="file-name">Component contracts</div><div class="file-desc">Anatomy, states and behaviour.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+          <a class="file-link" href="../docs/dark-mode.md"><span class="n">06</span><div><div class="file-name">Dark mode</div><div class="file-desc">The night rules and mapping.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+          <a class="file-link" href="../docs/ux-architecture.md"><span class="n">07</span><div><div class="file-name">UX architecture</div><div class="file-desc">Family shell, navigation and states.</div></div><svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+        </div>
+      </div>
+      <aside class="handoff-card">
+        <div class="tag">If you only send one thing</div>
+        <h3>Send the brief.</h3>
+        <p>It contains the mission, the non-negotiables, the screen recipes, the hard don’ts, the required states and the acceptance checklist. The agent can start with it alone and ask for the tokens when it needs exact values.</p>
+        <a class="btn btn-primary" href="../agent/brief.md">Open the agent brief <svg class="ico" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+        <div class="meta"><span>Quiet · v1.0.0</span><span>24 Oct 2026</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <span>Quiet · Alder family design language · reference, not production UI</span>
+    <span><a href="../../archive/exploration/STYLE-OPTIONS.md">Decision record</a> · <a href="../../archive/exploration/index.html?style=quiet">Explorer</a></span>
+  </footer>
+</main>
+
+<script src="reference.js"></script>
+</body>
+</html>

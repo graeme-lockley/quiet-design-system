@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Archive — Four directions (Quiet chosen)</title>
+<style>
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: #F4F1E9;
+    color: #17160F;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 34px 36px 60px; }
+  .masthead {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding-bottom: 18px; border-bottom: 1px solid #D9D3C5;
+    font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #6F6A5D;
+  }
+  .masthead b { color: #17160F; font-weight: 600; letter-spacing: .24em; }
+  .masthead .right { display: flex; gap: 18px; }
+  .masthead a:hover { color: #17160F; }
+  header { padding: 54px 0 34px; display: grid; grid-template-columns: 1.45fr .8fr; gap: 50px; align-items: end; }
+  .kicker { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #6F6A5D; display: flex; align-items: center; gap: 10px; }
+  .kicker::before { content: ""; width: 22px; height: 1px; background: #1F4D3D; }
+  h1 {
+    font-family: "New York", ui-serif, "Iowan Old Style", "Baskerville", "Hoefler Text", Georgia, serif;
+    font-weight: 400; font-size: clamp(44px, 5.2vw, 68px); line-height: .98;
+    letter-spacing: -.028em; margin: 16px 0 18px;
+  }
+  h1 em { font-style: italic; color: #A34A2E; }
+  .lede { font-size: 15px; line-height: 1.62; color: #5C574C; max-width: 62ch; margin: 0; }
+  .run { border: 1px solid #D9D3C5; padding: 18px 20px; background: #FAF7F0; }
+  .run .label { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: #6F6A5D; }
+  .run .value { font-family: "New York", ui-serif, Georgia, serif; font-size: 24px; margin: 6px 0 4px; letter-spacing: -.02em; }
+  .run p { margin: 0; font-size: 11.5px; line-height: 1.55; color: #5C574C; }
+  .run strong { color: #17160F; font-weight: 600; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; }
+  .card { background: #FBF8F1; border: 1px solid #D9D3C5; display: flex; flex-direction: column; }
+  .shot { display: block; border-bottom: 1px solid #D9D3C5; overflow: hidden; background: #E9E4D8; }
+  .shot img { width: 100%; display: block; aspect-ratio: 16 / 10.3; object-fit: cover; object-position: top left; transition: transform .5s cubic-bezier(.2,.7,.3,1); }
+  .card:hover .shot img { transform: scale(1.008); }
+  .body { padding: 15px 17px 16px; display: flex; flex-direction: column; flex: 1; }
+  .titlerow { display: flex; align-items: baseline; gap: 9px; }
+  .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 9px; color: #8A8477; letter-spacing: .08em; }
+  .name { font-family: "New York", ui-serif, Georgia, serif; font-size: 25px; letter-spacing: -.02em; line-height: 1; }
+  .tag { font-size: 11.5px; color: #5C574C; margin: 6px 0 0; line-height: 1.45; }
+  .kw { display: flex; gap: 4px; flex-wrap: wrap; margin: 12px 0 14px; }
+  .kw span { font-size: 8.5px; letter-spacing: .08em; text-transform: uppercase; color: #5C574C; border: 1px solid #D9D3C5; padding: 3px 6px; }
+  .facts { display: grid; grid-template-columns: 1fr; gap: 7px; margin-top: auto; border-top: 1px solid #E3DDD0; padding-top: 11px; }
+  .fact { display: grid; grid-template-columns: 64px 1fr; gap: 10px; font-size: 10px; line-height: 1.5; color: #5C574C; }
+  .fact b { font-weight: 500; font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: #8A8477; padding-top: 1px; }
+  .open { display: inline-flex; align-items: center; gap: 5px; margin-top: 13px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #17160F; font-weight: 500; }
+  .open span { transition: transform .18s ease; }
+  .card:hover .open span { transform: translateX(3px); }
+  .rec { margin-left: auto; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; color: #1F4D3D; background: #E7EEE8; padding: 3px 7px; border-radius: 99px; }
+  .note {
+    margin-top: 26px; padding: 20px 24px; background: #1F4D3D; color: #F3F1E8;
+    display: flex; align-items: flex-start; gap: 24px; justify-content: space-between;
+  }
+  .note .k { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; opacity: .6; }
+  .note h3 { font-family: "New York", ui-serif, Georgia, serif; font-weight: 400; font-size: 23px; margin: 7px 0 4px; letter-spacing: -.02em; }
+  .note p { margin: 0; font-size: 11.5px; line-height: 1.55; color: rgba(243,241,232,.75); max-width: 64ch; }
+  .note .cta { flex: 0 0 auto; align-self: center; border: 1px solid rgba(243,241,232,.35); padding: 10px 14px; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+  .note .cta:hover { background: rgba(255,255,255,.08); }
+  footer { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-top: 26px; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #8A8477; }
+  footer kbd { font-family: ui-monospace, Menlo, monospace; font-size: 8.5px; border: 1px solid #D9D3C5; border-bottom-width: 2px; padding: 1px 4px; color: #5C574C; }
+  @media (max-width: 900px) {
+    .wrap { padding: 22px 18px 40px; }
+    header { grid-template-columns: 1fr; gap: 24px; }
+    .grid { grid-template-columns: 1fr; }
+    .note { flex-direction: column; }
+    .masthead .right { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <div><b>Alder</b> &nbsp;/&nbsp; Design exploration</div>
+    <div class="right">
+      <span>Prepared for Graeme Lockley</span>
+      <span>24 October 2026</span>
+    </div>
+  </div>
+
+  <header>
+    <div>
+      <div class="kicker">Four directions, one family</div>
+      <h1>Look, read, <em>chosen</em>.</h1>
+      <p class="lede">The same product — a family of applications sharing one account, one navigation model and one set of data — rendered in four different convictions about how it should feel. Quiet was chosen on 24 October 2026; the other three remain recorded alternatives. Each direction is a complete language, not a skin.</p>
+    </div>
+    <aside class="run">
+      <div class="label">The chosen direction</div>
+      <div class="value">Quiet, by day<br>and by night.</div>
+      <p><strong>Quiet</strong> was chosen on 24 October 2026 and is now captured as a portable design system, including a designed night mode. Folio and Calibre remain recorded alternatives for different surfaces; they are not the family language.</p>
+    </aside>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="index.html?style=quiet&view=app">
+      <div class="shot"><img src="screens/quiet.png" alt="Quiet direction preview" /></div>
+      <div class="body">
+        <div class="titlerow"><span class="num">01</span><span class="name">Quiet</span><span class="rec">Chosen</span></div>
+        <p class="tag">Private-bank restraint, with Apple's typographic calm.</p>
+        <div class="kw"><span>Restrained</span><span>Light-first</span><span>Hairline</span><span>Typographic</span></div>
+        <div class="facts">
+          <div class="fact"><b>Best for</b><span>Client accounts, statements, approvals — trust before novelty.</span></div>
+          <div class="fact"><b>Watch</b><span>Needs space and disciplined type; tight, and the confidence vanishes.</span></div>
+        </div>
+        <span class="open">Open the live direction <span>→</span></span>
+      </div>
+    </a>
+
+    <a class="card" href="index.html?style=nocturne&view=app">
+      <div class="shot"><img src="screens/nocturne.png" alt="Nocturne direction preview" /></div>
+      <div class="body">
+        <div class="titlerow"><span class="num">02</span><span class="name">Nocturne</span></div>
+        <p class="tag">The same confidence after hours. Light as an edge, not a shadow.</p>
+        <div class="kw"><span>Dark-first</span><span>Material</span><span>Champagne</span><span>Spatial</span></div>
+        <div class="facts">
+          <div class="fact"><b>Best for</b><span>Focus workspaces, monitoring, reading, the evening half of a product.</span></div>
+          <div class="fact"><b>Watch</b><span>Dense tables weaken in the dark; keep fewer, better-lit elements.</span></div>
+        </div>
+        <span class="open">Open the live direction <span>→</span></span>
+      </div>
+    </a>
+
+    <a class="card" href="index.html?style=folio&view=app">
+      <div class="shot"><img src="screens/folio.png" alt="Folio direction preview" /></div>
+      <div class="body">
+        <div class="titlerow"><span class="num">03</span><span class="name">Folio</span></div>
+        <p class="tag">A private library, not a dashboard. Type does the ornament.</p>
+        <div class="kw"><span>Editorial</span><span>Serif</span><span>Warm</span><span>Rules</span></div>
+        <div class="facts">
+          <div class="fact"><b>Best for</b><span>Client portals, research, correspondence, records — a brand you can own.</span></div>
+          <div class="fact"><b>Watch</b><span>Serif display needs curation and air; resists dense ops screens.</span></div>
+        </div>
+        <span class="open">Open the live direction <span>→</span></span>
+      </div>
+    </a>
+
+    <a class="card" href="index.html?style=calibre&view=app">
+      <div class="shot"><img src="screens/calibre.png" alt="Calibre direction preview" /></div>
+      <div class="body">
+        <div class="titlerow"><span class="num">04</span><span class="name">Calibre</span></div>
+        <p class="tag">Cool light, graphite navigation, monospaced data. Built to be read fast.</p>
+        <div class="kw"><span>Dense</span><span>Technical</span><span>Mono</span><span>Split-view</span></div>
+        <div class="facts">
+          <div class="fact"><b>Best for</b><span>Operations, reconciliations, admin consoles — consequential tables.</span></div>
+          <div class="fact"><b>Watch</b><span>Can read cold to clients; reserve it for expert surfaces.</span></div>
+        </div>
+        <span class="open">Open the live direction <span>→</span></span>
+      </div>
+    </a>
+  </div>
+
+  <div class="note">
+    <div>
+      <div class="k">The decision</div>
+      <h3>One language, two lights.</h3>
+      <p>Quiet is now the family language: light first, with a proper night mode that keeps the same green and inverts the primary action. The accent is shared across apps; identity is carried by the monogram. Folio’s editorial confidence can still inform brand surfaces, but it is not the product language.</p>
+    </div>
+    <a class="cta" href="../../design-system/reference/index.html">Open the system →</a>
+  </div>
+
+  <footer>
+    <span>Alder — style exploration · Quiet chosen · not production UI</span>
+    <span><a href="STYLE-OPTIONS.md">Decision record</a> · <a href="index.html?style=quiet">Explorer</a> · <a href="../../design-system/reference/index.html">Design system</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "quiet-design-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quiet Design System — a technology-neutral design system for a family of applications. Light and night.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graeme-lockley/quiet-design-system.git"
+  },
+  "homepage": "https://github.com/graeme-lockley/quiet-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/graeme-lockley/quiet-design-system/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "build:tokens": "node scripts/build-tokens.mjs",
+    "validate": "node scripts/validate.mjs",
+    "check": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
